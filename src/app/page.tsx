@@ -1,10 +1,13 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import { kv } from "@vercel/kv";
 
-export default function Home() {
+export default async function Home() {
+  const homepageViews = await kv.incr("homeviews");
   return (
     <main className={styles.main}>
       <div className={styles.description}>
+        <p>Page views : {homepageViews}</p>
         <p>
           Get started by editing&nbsp;
           <code className={styles.code}>src/app/page.tsx</code>
