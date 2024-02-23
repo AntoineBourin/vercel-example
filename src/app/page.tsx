@@ -2,6 +2,8 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import { kv } from "@vercel/kv";
 
+const dynamic = "force-dynamic";
+
 export default async function Home() {
   const homepageViews = await kv.incr("homeviews");
   return (
